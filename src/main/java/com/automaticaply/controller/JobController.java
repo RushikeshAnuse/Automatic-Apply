@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.automaticaply.entity.Job;
 import com.automaticaply.service.JobService;
 
+//created by Rushikesh
 @RestController
 @RequestMapping("/api/jobs")
 public class JobController {
