@@ -14,8 +14,8 @@ public class AuthController {
 
     @GetMapping("/test")
     public String test() {
-        return "Hello Developer,"
-        		+ "API Working ✅";
+        return "Hello Developer Rushi,"
+        		+ " API Working ✅";
     }
 
     @PostMapping("/register")
