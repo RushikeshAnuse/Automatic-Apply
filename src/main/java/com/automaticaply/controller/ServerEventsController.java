@@ -1,12 +1,17 @@
 package com.automaticaply.controller;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Duration;
@@ -26,13 +31,21 @@ public class ServerEventsController {
 	
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<ServerSentEvent<String>>getEvents() throws IOException {
-
+ /*
         // Read lines from a file
         Stream<String> lines=Files.lines(Path.of(
           //"C:\\Users\\prade\\Downloads\\server-sent-events-example\\server-sent-events-example\\pom.xml"));
 
         		"C:\\Users\\Rushikesh\\Documents\\workspace-spring-tool-suite-4-4.26.0.RELEASE\\ServerSentEvents\\pom.xml"));		
-        		
+        	*/
+        
+        InputStream inputStream =
+        	    new ClassPathResource("data/sample.txt").getInputStream();
+
+        	BufferedReader reader =
+        	    new BufferedReader(new InputStreamReader(inputStream));
+
+        	Stream<String> lines = reader.lines();
         		
         // Counter for event IDs
         AtomicInteger counter=new AtomicInteger(1);
